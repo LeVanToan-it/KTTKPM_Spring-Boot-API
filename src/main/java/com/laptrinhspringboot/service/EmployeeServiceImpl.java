@@ -1,8 +1,5 @@
 package com.laptrinhspringboot.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.laptrinhspringboot.entity.Employees;
@@ -19,13 +16,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Iterable<Employees> getAllByID(Iterable<Long> employeeID) {
+	public Iterable<Employees> findAll() {
 		// TODO Auto-generated method stub
-			return employeeRepository.findAllById(employeeID);
+			return employeeRepository.findAll();
 	}
 
 	@Override
-	public void updateEmployeeByID(Employees employee) {
+	public void save(Employees employee) {
 		// TODO Auto-generated method stub		
 		employeeRepository.save(employee);
 	}
