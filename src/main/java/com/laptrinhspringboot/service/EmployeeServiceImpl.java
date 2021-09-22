@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.laptrinhspringboot.entity.Employees;
+import com.laptrinhspringboot.entity.EmployeeEntity;
 import com.laptrinhspringboot.repository.EmployeeRepository;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -13,19 +13,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 
 	@Override
-	public Employees create(Employees employee) {
+	public EmployeeEntity create(EmployeeEntity employee) {
 		// TODO Auto-generated method stub
 		return employeeRepository.save(employee);
 	}
 
 	@Override
-	public Iterable<Employees> getAllByID(Iterable<Long> employeeID) {
+	public Iterable<EmployeeEntity> getAllByID(Iterable<Long> employeeID) {
 		// TODO Auto-generated method stub
 			return employeeRepository.findAllById(employeeID);
 	}
 
 	@Override
-	public void updateEmployeeByID(Employees employee) {
+	public void updateEmployeeByID(EmployeeEntity employee) {
 		// TODO Auto-generated method stub		
 		employeeRepository.save(employee);
 	}
