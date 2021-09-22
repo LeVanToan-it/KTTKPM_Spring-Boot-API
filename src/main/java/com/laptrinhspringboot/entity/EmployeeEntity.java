@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @Table(name = "tbl_employee")
-public class Employees {
+public class EmployeeEntity {
     @Id
     @GeneratedValue
     private Long id;

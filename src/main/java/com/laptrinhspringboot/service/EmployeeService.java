@@ -1,13 +1,16 @@
 package com.laptrinhspringboot.service;
 
-import com.laptrinhspringboot.entity.Employees;
+import java.util.List;
+
+import com.laptrinhspringboot.entity.EmployeeEntity;
 
 
 
 public interface EmployeeService {
-	public Employees create(Employees employee);
-	public Iterable<Employees> findAll();
-	public void save(Employees employee);
+	public EmployeeEntity create(EmployeeEntity employee);
+	public List<EmployeeEntity> findAllEmployee();
+	public EmployeeEntity findEmployeeByID(Long employeeID);
+	public EmployeeEntity updateEmployeeByID(Long employeeID,EmployeeEntity employee);
 	public void deleteEmployeeByID(Long employeeID);
 	
 }

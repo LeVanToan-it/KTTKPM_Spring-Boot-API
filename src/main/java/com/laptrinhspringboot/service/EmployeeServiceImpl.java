@@ -1,8 +1,10 @@
 package com.laptrinhspringboot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.laptrinhspringboot.entity.Employees;
+import com.laptrinhspringboot.entity.EmployeeEntity;
 import com.laptrinhspringboot.repository.EmployeeRepository;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -10,27 +12,33 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 
 	@Override
-	public Employees create(Employees employee) {
+	public EmployeeEntity create(EmployeeEntity employee) {
 		// TODO Auto-generated method stub
 		return employeeRepository.save(employee);
 	}
 
 	@Override
-	public Iterable<Employees> findAll() {
+	public List<EmployeeEntity> findAllEmployee() {
 		// TODO Auto-generated method stub
 			return employeeRepository.findAll();
 	}
 
 	@Override
-	public void save(Employees employee) {
+	public EmployeeEntity updateEmployeeByID(Long employeeID, EmployeeEntity employee) {
 		// TODO Auto-generated method stub		
-		employeeRepository.save(employee);
+		return employeeRepository.save(employee);
 	}
 
 	@Override
 	public void deleteEmployeeByID(Long employeeID) {
 		// TODO Auto-generated method stub
 		employeeRepository.deleteById(employeeID);
+	}
+
+	@Override
+	public EmployeeEntity findEmployeeByID(Long employeeID) {
+		// TODO Auto-generated method stub
+		return employeeRepository.getById(employeeID);
 	}
 
 }

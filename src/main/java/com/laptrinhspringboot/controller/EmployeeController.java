@@ -1,5 +1,7 @@
 package com.laptrinhspringboot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.laptrinhspringboot.entity.Employees;
+import com.laptrinhspringboot.entity.EmployeeEntity;
 import com.laptrinhspringboot.service.EmployeeService;
 
 public class EmployeeController {
@@ -16,12 +18,17 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@GetMapping(value= {"/employees","/"})
-	public Iterable<Employees> findAllEmployee() {
-		return employeeService.findAll();
+	public List<EmployeeEntity> findAllEmployee() {
+		return employeeService.findAllEmployee();
+	}
+	
+	@GetMapping("/employees/{id}")
+	public EmployeeEntity findEmployeeByID(@PathVariable("id")Long employeeID) {
+		return employeeService.findEmployeeByID(employeeID);
 	}
 	
 	@PostMapping(value="/create")
-	public Employees createEmployee(@RequestBody Employees employee) {
+	public EmployeeEntity createEmployee(@RequestBody EmployeeEntity employee) {
 		return employeeService.create(employee);
 	}
 	
@@ -31,7 +38,7 @@ public class EmployeeController {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public void deleteEmployeeByID(@PathVariable("id") Long employeeID, @RequestBody Employees employee) {
+	public void deleteEmployeeByID(@PathVariable("id") Long employeeID, @RequestBody EmployeeEntity employee) {
 		employeeService.deleteEmployeeByID(employeeID);
 	}
 }
